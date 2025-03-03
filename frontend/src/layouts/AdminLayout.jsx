@@ -14,9 +14,10 @@ import {
   TagOutlined,
   TagsOutlined,
 } from '@ant-design/icons';
+import PropTypes from "prop-types";
 const { Header, Footer, Sider, Content } = Layout;
 
-function AdminLayout() {
+function AdminLayout({children}) {
   const navigate = useNavigate()
   const items = [
     {
@@ -145,7 +146,7 @@ function AdminLayout() {
       </Sider>
       <Layout>
         <Header style={{color: "white"}}>Header</Header>
-        <Content style={{}}>Content</Content>
+        <Content style={{padding: "30px"}}>{children}</Content>
         <Footer style={{}}>Footer</Footer>
       </Layout>
     </Layout>
@@ -154,3 +155,7 @@ function AdminLayout() {
 }
 
 export default AdminLayout
+
+AdminLayout.propTypes = {
+  children : PropTypes.node
+}
