@@ -23,12 +23,12 @@ function CategoryList() {
     {
       title: "Process",
       key: "process",
-      render: () => (
+      render: (record) => (
         <>
           <Button
             color="cyan"
             variant="solid"
-            onClick={() => navigate("/admin/categories/update")}
+            onClick={() => navigate(`/admin/categories/update/${record._id}`)}
             style={{marginRight: "5px"}}
           >
             Update
@@ -36,7 +36,7 @@ function CategoryList() {
           <Button
             color="danger"
             variant="solid"
-            onClick={() => navigate("/admin/categories/create")}
+          onClick={() => deleteCategories(record._id)}
           >
             Delete
           </Button>
@@ -73,6 +73,7 @@ function CategoryList() {
   const onChange = (pagination, filters, sorter, extra) => {
     console.log("params", pagination, filters, sorter, extra);
   };
+
   const getCategories = async () => {
     try {
       const response = await fetch("http://localhost:5000/api/categories");
@@ -86,9 +87,28 @@ function CategoryList() {
       console.log("Sunucu hatası...", error);
     }
   };
+  const deleteCategories =async (categoryId) => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/categories/${categoryId}`,{
+        method : "DELETE",
+        headers : {"Content-Type" : "application/json"},
+        body : JSON.stringify({_id : categoryId})
+      });
+      if(response.ok){
+        console.log("Kategori başarıyla silindi....");
+        navigate("/admin/categories")
+      }else{
+        console.log("Kategori silme işlemi başarısız...");
+      }
+    } catch (error) {
+      console.log("Sunucu hatası...",error)
+    }
+  }
   useEffect(() => {
     getCategories();
-  }, []);
+  }, [deleteCategories]);
+
+
   return (
     <>
       <h2>Category List</h2>
