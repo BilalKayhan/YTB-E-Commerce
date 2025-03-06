@@ -143,7 +143,7 @@ function ProductList() {
     <>
     <h2>Product List</h2>
     <br /><hr /><br /> 
-    <Table dataSource={products} columns={columns} />;
+    <Table dataSource={products} columns={columns} />
     </>
   )
 }
