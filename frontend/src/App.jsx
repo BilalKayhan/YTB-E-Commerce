@@ -14,6 +14,7 @@ import UpdateCategory from "./pages/Admin/Categories/UpdateCategory"
 import UserList from "./pages/Admin/Users/UserList"
 import ProductList from "./pages/Admin/Products/ProductList"
 import CreateProduct from "./pages/Admin/Products/CreateProduct"
+import UpdateProduct from "./pages/Admin/Products/UpdateProduct"
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
         <Route path="categories/update/:id" element={<UpdateCategory/>}/>
         <Route path="products" element={<ProductList/>}/>
         <Route path="products/create" element={<CreateProduct/>}/>
+        <Route path="products/update/:id" element={<UpdateProduct/>}/>
         <Route path="users" element={<UserList/>}/>
       </Route>
     </Routes>

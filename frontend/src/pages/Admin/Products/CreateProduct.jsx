@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Button, Checkbox, Form, Input, InputNumber, message, Select } from "antd";
 
 function CreateProduct() {
-    const [ categories, setCategories ] = useState([]);
+  const [ categories, setCategories ] = useState([]);
   const [form] = Form.useForm();
   const formLayout = "vertical";
   const colorOptions = ["Red","Green","Blue","Black","White","Brown"];
@@ -47,6 +47,8 @@ function CreateProduct() {
   },[]);
   return (
     <>
+    <h2>Create Product Panel</h2>
+    <br /><hr /><br /> 
       <Form
         layout={formLayout}
         form={form}
